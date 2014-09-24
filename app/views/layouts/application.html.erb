@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CindysAirbnb</title>
+  <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<p class="alert"><%= flash[:alert] %></p>
+<p class="notice"><%= flash[:notice] %></p>
+
+<div class='container'>
+  <div class='row'>
+    <h1><b>Cindy's Airbnb!</b></h1>
+    <h4><span class="smaller">Current user:&nbsp&nbsp</span>
+      <% if current_user.nil? %>
+        <u>No user logged in yet</u>
+      <% else %>
+        <%= current_user.email %>
+      <% end %>
+  </div><br>
+
 <%= yield %>
 
+</div>
 </body>
 </html>

@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   has_many :comments, :as => :opinions_about
-  validates :username, :presence => true, length: { maximum: 16 }
-  validates :email, :presence => true, length: { maximum: 50 }
+  validates :username, :presence => true, :uniqueness => true, length: { minimum: 8, maximum: 16 }
+  validates :email, :presence => true, length: { minimum: 5, maximum: 50 }
   validates_format_of :email, with: /^.+@.+\..+$/, on: :create, :multiline => true
   validates :date_joined, :presence => true
 
@@ -11,6 +14,6 @@ class User < ActiveRecord::Base
 
 private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :remember_me, :date_joined)
   end
 end
