@@ -18,16 +18,26 @@ cindys_airbnb
 * ./app/assets/stylesheets/application.css.scss (modified by author)
 * ./app/controllers/application\_controller.rb (modified by author)
 * ./app/controllers/users\_controller.rb
+* ./app/models/comment.rb (the Ruby implementation of the Comment model, polymorphic)
 * ./app/models/landlord.rb (the Ruby implementation of the Landlord model, child of User model)
+* ./app/models/rental.rb (the Ruby implementation of the Rental model)
+* ./app/models/renter.rb (the Ruby implementation of the Renter model, child of User model)
+* ./app/models/reservation.rb (the Ruby implementation of the Reservation model)
+* ./app/models/landlord.rb (the Ruby implementation of the User model, parent of Landlord and Renter models)
 * ./app/views/layouts/\_errors.html.erb (error partial form)
 * ./app/views/layouts/application.html.erb (modified by author)
 * ./app/views/recipe\_users/\_form1.html.erb (shared partial form)
-* ./config/routes.rb (the Rails routes for user action requests)
-* ./db/config.yml (database configuration file showing the names of the development and test databases)
-* ./db/schema.rb (database schema)
-* ./db/migrate/*.rb (database migrations, which show the development of the database step-by-step. These are stored in the database as an additional table. The names are preceded by time stamps so they vary)
+* ./config/routes.rb (the Rails routes for action requests)
+* ./db/config.yml (database configuration file showing the names of the development, test and production databases)
+* ./db/schema.rb (database schema, generated through rails database migrations)
+* ./db/migrate/*.rb (rails database migrations, which show the development of the database step-by-step. These are stored in the database as an additional table. The names are preceded by time stamps so they vary)
 * ./spec/features/landlord\_spec.rb (the test spec for the Landlord class)
-* ./spec/models/landlord\_spec.rb (the test spec for the Landlord portion of the application)
+* ./spec/models/comment\_spec.rb (the test spec for the Comment model)
+* ./spec/models/landlord\_spec.rb (the test spec for the Landlord model)
+* ./spec/models/rental\_spec.rb (the test spec for the Rental model)
+* ./spec/models/renter\_spec.rb (the test spec for the Renter model)
+* ./spec/models/reservation\_spec.rb (the test spec for the Reservation model)
+* ./spec/models/user\_spec.rb (the test spec for the User model)
 
 ## Requirements for execution:
 
@@ -93,13 +103,12 @@ This Ruby application implements a graphical user interface to a rental manageme
 
 ### User stories for the landlord:
 * As a landlord, I want to be able to create a uniquely named, secure landlord account and have my registration confirmed via email.
-* As a landlord, I want to list my rental including rental description, address, rental rate, and miscellaneous requirements. I then want to be able to maintain or delete my listing.
-* As a landlord, I want to optionally be able to upload a photo of my rental.
-* As a landlord, I want to keep track of the YTD and future reservations for my rental.
-* As a landlord, I want to receive an email message when my rental is reserved by a renter.
+* As a landlord, I want to list my rentals including rental description, address, rental rate, and miscellaneous amenities. I then want to be able to maintain or delete my listing.
+* As a landlord, I want to optionally be able to upload a photo of each rental.
+* As a landlord, I want to keep track of the YTD and future reservations for my rentals.
+* As a landlord, I want to receive an email message when each rental is reserved by a renter.
 * As a landlord, I want to be able to rate and make comments about renters.
-* As a landlord, I want to be able to respond to comments made about me and my rental.
-* As a landlord, I want to be able to see the ratings and comments of others about renters.
+* As a landlord, I want to be able to see the ratings and comments of others about renters who have or have had reservations for my rentals.
 
 ### User stories for the renter:
 * As a renter, I want to be able to create a secure renter account and have my registration confirmed via email.
@@ -108,8 +117,7 @@ This Ruby application implements a graphical user interface to a rental manageme
 * As a renter, I want to see all rentals available in a city within a range of rental rates.
 * As a renter, I want to be able to reserve a rental for a specific period of time and receive an email confirmation of the reservation. I also want to be able to cancel any reservation and receive an email confirmation of the cancellation. If the reservation period has already begun, I want to be able to cancel the remainder of the reservation without having to pay.
 * As a renter, I want to be able to rate and make comments about landlords and properties.
-* As a renter, I want to be able to respond to comments made about me.
-* As a renter, I want to be able to see the ratings and comments of others about landlords and properties.
+* As a renter, I want to be able to see the ratings and comments of others about all landlords and properties so I can make better decisions about the rentals I reserve.
 
 ### Constraints and conditions:
 * If a user wishes to be both a landlord and a renter, they must have 2 different user names (user names are unique for all users, whether landlords or renters). This is a constraint because I used single-table inheritance rather than a more flexible mechanism to distinguish between the two types of users.

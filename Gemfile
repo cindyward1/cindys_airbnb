@@ -12,6 +12,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'paperclip'
 gem 'kaminari'
+gem 'aws-sdk'
 
 group :development do
   gem 'better_errors'

@@ -1,4 +1,4 @@
 class Landlord < User
   has_many :rentals, foreign_key: :user_id
-  has_many :renters, through: :reservations
+  has_many :reservations, through: :rentals
 end
