@@ -18,26 +18,16 @@ cindys_airbnb
 * ./app/assets/stylesheets/application.css.scss (modified by author)
 * ./app/controllers/application\_controller.rb (modified by author)
 * ./app/controllers/users\_controller.rb
-* ./app/models/comment.rb (the Ruby implementation of the Comment model, polymorphic)
 * ./app/models/landlord.rb (the Ruby implementation of the Landlord model, child of User model)
-* ./app/models/rental.rb (the Ruby implementation of the Rental model)
-* ./app/models/renter.rb (the Ruby implementation of the Renter model, child of User model)
-* ./app/models/reservation.rb (the Ruby implementation of the Reservation model)
-* ./app/models/landlord.rb (the Ruby implementation of the User model, parent of Landlord and Renter models)
 * ./app/views/layouts/\_errors.html.erb (error partial form)
 * ./app/views/layouts/application.html.erb (modified by author)
 * ./app/views/recipe\_users/\_form1.html.erb (shared partial form)
-* ./config/routes.rb (the Rails routes for action requests)
-* ./db/config.yml (database configuration file showing the names of the development, test and production databases)
-* ./db/schema.rb (database schema, generated through rails database migrations)
-* ./db/migrate/*.rb (rails database migrations, which show the development of the database step-by-step. These are stored in the database as an additional table. The names are preceded by time stamps so they vary)
+* ./config/routes.rb (the Rails routes for user action requests)
+* ./db/config.yml (database configuration file showing the names of the development and test databases)
+* ./db/schema.rb (database schema)
+* ./db/migrate/*.rb (database migrations, which show the development of the database step-by-step. These are stored in the database as an additional table. The names are preceded by time stamps so they vary)
 * ./spec/features/landlord\_spec.rb (the test spec for the Landlord class)
-* ./spec/models/comment\_spec.rb (the test spec for the Comment model)
-* ./spec/models/landlord\_spec.rb (the test spec for the Landlord model)
-* ./spec/models/rental\_spec.rb (the test spec for the Rental model)
-* ./spec/models/renter\_spec.rb (the test spec for the Renter model)
-* ./spec/models/reservation\_spec.rb (the test spec for the Reservation model)
-* ./spec/models/user\_spec.rb (the test spec for the User model)
+* ./spec/models/landlord\_spec.rb (the test spec for the Landlord portion of the application)
 
 ## Requirements for execution:
 
@@ -121,6 +111,7 @@ This Ruby application implements a graphical user interface to a rental manageme
 
 ### Constraints and conditions:
 * If a user wishes to be both a landlord and a renter, they must have 2 different user names (user names are unique for all users, whether landlords or renters). This is a constraint because I used single-table inheritance rather than a more flexible mechanism to distinguish between the two types of users.
+* There is no direct way to adjust the rate by season; the landlord would have to manually adjust the rate.
 
 ##Thanks:
 * To the staff at Epicodus for providing such a wonderful boot camp class with a tremendous internship opportunity at the end! It's been a lot of hard work but totally worth it :)

@@ -13,3 +13,59 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+label {
+  text-align: right;
+  width: 165px;
+  float: left;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+label.label_short {
+  width: 165px;
+  float: none;
+}
+
+.text_field {
+  width: 300px;
+  float: left;
+}
+
+.time_field{
+  width: 300px;
+  float: left;
+}
+
+a.white {
+  color: white
+}
+
+.smaller {
+  font-size: 75%;
+}
+
+.padding-right {
+  padding-right: 20px;
+}
+
+.upload {
+  float: left;
+}
+
+ul, li {
+  list-style-type: none;
+  list-style-position:inside;
+  margin:0;
+  padding:0;
+}
+
+option[selected] {
+  color: black;
+}
+
+div.field_with_errors {
+  display: inline;
+}

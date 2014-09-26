@@ -13,14 +13,14 @@
 
 <div class='container'>
   <div class='row'>
-    <h1><b>Cindy's Airbnb!</b></h1>
+    <h1><%= image_tag('logo.png', class: 'pull-left padding-right', width: '300') %><b>Cindy's Airbnb!</b></h1>
     <h4><span class="smaller">Current user:&nbsp&nbsp</span>
       <% if current_user.nil? %>
         <u>No user logged in yet</u>
       <% else %>
         <%= current_user.email %>
       <% end %>
-  </div><br>
+ </div><br>
 
 <%= yield %>
 

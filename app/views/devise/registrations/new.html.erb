@@ -1,0 +1,30 @@
+<% content_for(:title, "Sign Up | Cindy's Airbnb!") %>
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h5><%= devise_error_messages! %></h5>
+
+  <div><br><%= f.label :username %>&nbsp&nbsp
+  <%= f.text_field :username, autofocus: true %><br><br></div>
+
+  <div><%= f.label :email %>&nbsp&nbsp
+  <%= f.email_field :email %><br><br></div>
+
+  <div><%= f.label :password %>&nbsp&nbsp
+    <% if @validatable %>
+      <span class="smaller"><i>(<%= @minimum_password_length %> characters minimum, <%= @maximum_password_length %> characters maximum)</i></span><br>
+    <% end %>&nbsp&nbsp
+    <%= f.password_field :password, autocomplete: "off" %><br><br></div>
+
+  <div><%= f.label :password_confirmation %>&nbsp&nbsp
+    <%= f.password_field :password_confirmation, autocomplete: "off" %><br><br><br></div>
+
+  <div><%= f.label :type_renter, "I am a Renter", class: "label_short" %>&nbsp&nbsp
+    <%= f.radio_button :type, "Renter" %>
+    <%= f.label :type_landlord, "I am a Landlord", class: "label_short" %>&nbsp&nbsp
+    <%= f.radio_button :type, "Landlord" %><br><br></div>
+
+  <div><%= f.submit "Sign up" %><br><br></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
