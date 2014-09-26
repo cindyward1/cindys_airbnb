@@ -13,7 +13,6 @@ gem 'devise'
 gem 'paperclip'
 gem 'kaminari'
 gem 'aws-sdk'
-gem 'mailcatcher'
 
 group :development do
   gem 'better_errors'
@@ -24,12 +23,12 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'launchy'
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'launchy'
   gem 'factory_girl'
   gem 'database_cleaner'
   gem 'poltergeist'
