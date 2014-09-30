@@ -8,18 +8,19 @@
 </head>
 <body>
 
-<p class="alert"><%= flash[:alert] %></p>
-<p class="notice"><%= flash[:notice] %></p>
+<%= flash[:alert] %>
+<%= flash[:notice] %>
 
 <div class='container'>
   <div class='row'>
-    <h1><%= image_tag('logo.png', class: 'pull-left padding-right', width: '300') %><b>Cindy's Airbnb!</b></h1>
+    <h1><%= image_tag('logo.png', class: 'pull-left padding-right', width: '200') %><b>Cindy's Airbnb!</b></h1>
     <h4><span class="smaller">Current user:&nbsp&nbsp</span>
       <% if current_user.nil? %>
         <u>No user logged in yet</u>
       <% else %>
-        <%= current_user.email %>
+        <%= current_user.username %> at <%= current_user.email %>
       <% end %>
+    </span></h4>
  </div><br>
 
 <%= yield %>

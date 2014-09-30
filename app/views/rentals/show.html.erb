@@ -1,0 +1,13 @@
+<% content_for(:title, "Show a Rental | Cindy's Airbnb!") %>
+<h3><u>Show a Rental</u></h3>
+<%= image_tag @photo.the_photo.url(:original), :class => "center-block" %>
+<%= render('form_d') %>
+<br><br><br>
+<hr>
+<% if current_user.landlord? %>
+  <h4><%= link_to "See All of Your Rentals", photos_path %></h4>
+  <h4><%= link_to "Add a New Rental", new_rental_path %></h4>
+<% else %>
+  <h4><%= link_to "See All Rentals", photos_path %></h4>
+<% end %>
+<h4><%= link_to "Logout", session_path("current"), :method => "delete" %></h4>

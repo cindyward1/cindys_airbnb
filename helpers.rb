@@ -209,7 +209,16 @@ module Devise
       #   end
       #
       def after_sign_in_path_for(resource_or_scope)
-        stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
+        stored_location_for(resource_or_scope)||
+          if resource.is_a?(Landlord)
+            landlord_return_to_path
+          elsif resource.is_a?(Renter)
+            renter_return_to_path
+          elsif resource.if_a?(User)
+            renter_return_to_path
+          else
+            super
+          end
       end
 
       # Method used by sessions controller to sign out a user. You can overwrite

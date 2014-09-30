@@ -1,5 +1,9 @@
 module Devise
   module Models
+    # Cindy Ward - Cindy's Airbnb for Epicodus Rails with AJAX assessment, Summer 2014
+    # This file had to be modified because I decided to use username rather than email
+    # as the unique validation element.
+    #
     # Validatable creates all needed validations for a user email and password.
     # It's optional, given you may want to create the validations by yourself.
     # Automatically validate if the email is present, unique and its format is

@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: "devise/sessions#new"
   end
-  scope :landlord do
-    get '/', to: 'rentals#new', as: 'landlord_return_to'
+  devise_scope :landlord do
+    get '/landlord', to: 'rentals#new', as: 'landlord_root'
   end
-  scope :renter do
-    get '/', to: 'reservations#new', as: 'renter_return_to'
+  devise_scope :renter do
+    get '/renter', to: 'reservations#new', as: 'renter_root'
   end
-  resources :users, concerns: :opinions_about
+  resources :users, only: [], concerns: :opinions_about
 end

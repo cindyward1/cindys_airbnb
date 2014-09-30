@@ -1,0 +1,40 @@
+<%= render('layouts/errors', :object => @rental) %>
+<h5><b><br>Please enter the information about your rental:</b></h5>
+<div class = "form-group">
+  <%= f.label :rental_type %>
+  <%= f.label :rental_type, "Entire property", :value => "entire", :class => "label_short"  %>
+  <%= f.radio_button :rental_type, "entire", :class => "padding-right", disabled %>
+  <%= f.label :rental_type, "Private room", :value => "private", :class => "label_short" %>
+  <%= f.radio_button :rental_type, "private", :class => "padding-right", disabled %>
+  <%= f.label :rental_type, "Shared room", :value => "shared", :class => "label_short" %>
+  <%= f.radio_button :rental_type, "shared", :class => "padding-right", disabled %>
+</div><br><br>
+<div class = "form-group">
+  <%= f.label :city, :class => "label_short" %>
+  <%= f.text_field :city, :class => "padding-right", disabled %>
+  <%= f.label :state, :class => "label_short" %>
+  <%= f.select(:state, options_for_select(us_states, @rental.state)), :class => "padding-right", disabled %>
+</div>
+<div class="form-group">
+  <%= f.label :number_bedrooms, "Bedroom count", :class => "label_short" %>
+  <%= f.number_field :number_bedrooms, @rental.number_bedrooms, :class => "padding-right", disabled %>
+  <%= f.label :number_beds, "Bed count", :class => "label_short" %>
+  <%= f.number_field :number_beds, @rental.number_beds, in: 1..20, :class => "padding-right", disabled %>
+  <%= f.label :number_bathrooms, "Bathroom count", :class => "label_short" %>
+  <%= f.number_field :number_bathrooms, @rental.number_bathrooms, in: 1..10, :class => "padding-right", disabled %>
+  <%= f.label :max_number_guests, "Maximum number of guests allowed" %>
+  <%= f.number_field :max_number_guests, @rental.max_number_guests, in: 1..20, :class => "padding-right", disabled %>
+</div>
+<div class="form-group">
+  <%= f.label :base_rate, "Nightly rate $USD for 1 guest" %>
+  <%= f.number_field, :base_rate, @rental.base_rate, min: 10, :class => "padding-right", disabled %>
+  <%= f.label :extra_guest_rate, "Nightly rate $USD per extra guest" %>
+  <%= f.number_field, :extra_guest_rate, @rental.extra_guest_rate, min: 0, :class => "padding-right", disabled %>
+  <%= f.label :minimum_days_stay, "Minimum stay length in days" %>
+  <%= f.number_field, :minimum_days_stay, @rental.minimum_days_stay, min: 1, :class => "padding-right", disabled %>
+</div>
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, @rental.description, rows: 10, cols: 80, disabled %>
+</div>
+<br><br>

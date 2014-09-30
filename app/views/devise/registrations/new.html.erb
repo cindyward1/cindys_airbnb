@@ -4,19 +4,19 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <h5><%= devise_error_messages! %></h5>
 
-  <div><br><%= f.label :username %>&nbsp&nbsp
+  <div><br><%= f.label :username %>&nbsp&nbsp<span class="smaller"><i>(8 characters minimum, 32 characters maximum)</i></span><br>&nbsp&nbsp
   <%= f.text_field :username, autofocus: true %><br><br></div>
 
-  <div><%= f.label :email %>&nbsp&nbsp
+  <div><%= f.label :email %>&nbsp&nbsp<span class="smaller"><i>(5 characters minimum, 50 characters maximum)</i></span><br>&nbsp&nbsp
   <%= f.email_field :email %><br><br></div>
 
   <div><%= f.label :password %>&nbsp&nbsp
     <% if @validatable %>
-      <span class="smaller"><i>(<%= @minimum_password_length %> characters minimum, <%= @maximum_password_length %> characters maximum)</i></span><br>
-    <% end %>&nbsp&nbsp
+      <span class="smaller"><i>(<%= @minimum_password_length %> characters minimum, <%= @maximum_password_length %> characters maximum)</i></span><br>&nbsp&nbsp
+    <% end %>
     <%= f.password_field :password, autocomplete: "off" %><br><br></div>
 
-  <div><%= f.label :password_confirmation %>&nbsp&nbsp
+  <div><%= f.label :password_confirmation %>&nbsp&nbsp<span class="smaller"><i>(MUST match password above)</i></span><br>&nbsp&nbsp
     <%= f.password_field :password_confirmation, autocomplete: "off" %><br><br><br></div>
 
   <div><%= f.label :type_renter, "I am a Renter", class: "label_short" %>&nbsp&nbsp

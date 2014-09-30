@@ -8,5 +8,4 @@ describe Rental do
   it { should validate_presence_of :city }
   it { should validate_presence_of :state }
   it { should validate_presence_of :base_rate }
-  it { should validate_numericality_of :base_rate }
 end

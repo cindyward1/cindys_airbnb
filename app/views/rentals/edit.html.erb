@@ -1,0 +1,17 @@
+<% content_for(:title, "Edit Rental | Cindy's Airbnb!") %>
+<h3><u>Edit a Rental</u></h3>
+<%= image_tag @photo.the_photo.url(:original), :class => "center-block" %>
+<%= form_for @rental, :html => { :multipart => true } do |f| %>
+
+  <%= render('form') %>
+  <%= f.submit "Update Rental", :class => "btn btn-warning pull_left" %>
+<% end %>
+  <p><%= link_to "Delete Rental", rental_path(@rental),
+                       :data => {:confirm => "Please confirm the deletion of this rental",
+                                 :method => "delete"},
+                       :class => "btn btn-danger" %></p>
+<br><br>
+
+<h4><%= link_to "See All of Your Rentals", photos_path %></h4>
+<h4><%= link_to "Create a New Rental", new_rental_path %></h4>
+<h4><%= link_to "Logout", session_path("current"), :method => "delete" %></h4>
