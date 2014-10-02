@@ -1,0 +1,12 @@
+- content_for(:title, "New Rental | Cindy's Airbnb!")
+%h3
+  %u Create a New Rental
+= render('form')
+%br/
+%br/
+%br/
+%hr/
+%h4
+  = link_to "See All Rentals", rentals_path
+%h4
+  = link_to "Log out", destroy_user_session_path, method: :delete

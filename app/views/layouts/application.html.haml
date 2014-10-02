@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title= yield(:title)
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    = flash[:alert]
+    = flash[:notice]
+    .container
+      .row
+        %h1
+          = image_tag("logo.png", class: "pull-left padding-right", width: "200")
+          %b Cindy's Airbnb!
+        %h4
+          %span.smaller Current user:&nbsp&nbsp
+          - if current_user.nil?
+            %u No user logged in yet
+          -else
+            = current_user.username
+            at #{current_user.email}
+      %br/
+      = yield

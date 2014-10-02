@@ -13,6 +13,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'kaminari'
 gem 'aws-sdk'
+gem 'haml'
 
 group :development do
   gem 'better_errors'

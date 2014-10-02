@@ -1,0 +1,6 @@
+- if object != nil
+  - if object.errors.any?
+    %h4 Please fix these input errors:
+    %ul
+      - object.errors.full_messages.each do |message|
+        %li= message
